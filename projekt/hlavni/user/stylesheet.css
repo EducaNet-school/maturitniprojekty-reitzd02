@@ -1,0 +1,127 @@
+.vlozeni{
+  font-family: Arial, Helvetica, sans-serif;
+  margin:auto;
+  padding:10px;
+  border:3px outset black;
+  background-color:#0e312c;
+  text-align: center;
+  width: 25%;
+  color:white;
+}
+.select{
+  font-family:Arial, Helvetica, sans-serif;
+  padding: 10px;
+  border:3px outset black;
+  background-color: aliceblue;
+  text-align: center;
+  margin: left;
+  color: black;
+  width:97.5%;
+}
+.editace{
+  font-family:Arial, Helvetica, sans-serif;
+  padding: 10px;
+  border:3px outset black;
+  background-color: aliceblue;
+  text-align: center;
+  color: white;
+  margin: left;
+  width:100%;
+  text-decoration-color: black;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #0e312c;
+}
+
+li {
+  float: left;
+  width:118px;
+}
+
+li a {
+  font-family: Arial, Helvetica, sans-serif;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+  min-width: 81.6px;
+}
+
+li a:hover {
+  background-color: #111111;
+  height:35.5px;
+}
+
+body {
+  background-image: url('armyback.jpg');
+}
+
+head {
+  position: fixed;
+}
+table, tr, td{
+  border-collapse: collapse;
+  border: 2px solid;
+}
+
+
+#quiz {
+  max-width: 600px;
+  margin: 0 auto;
+  border: 3px solid black;
+}
+.question{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    background-color: white;
+    border-width: 100%;
+  }
+  .answers {
+    font-family: Arial, Helvetica, sans-serif;
+      margin-bottom: 0px;
+      background-color: white;
+      text-align: left;
+  }
+  #submit{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background-color: #0e312c;
+    color: #fff;
+    border: 0px;
+    border-radius: 3px;
+    padding: 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  #submit:hover{
+    background-color: #0e312c;
+  }
+.dropbtn {
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: inherit;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #0e312c;
+    min-height: 68px;
+    min-width: 100px;
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+    min-height: 68px;
+    min-width: 100px;
+    box-shadow: 0px 20px 10px 0px rgba(0,0,0,0.2);
+  }

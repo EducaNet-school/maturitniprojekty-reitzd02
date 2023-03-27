@@ -1,0 +1,179 @@
+#textbox {
+    height: 200px;
+    width: 200px;
+}
+.vlozeni{
+  font-family: Arial, Helvetica, sans-serif;
+  margin:auto;
+  padding:10px;
+  border:3px outset black;
+  background-color:#0e312c;
+  text-align: center;
+  width: 38%;
+  color:white;
+}
+.select{
+    font-family:Arial, Helvetica, sans-serif;
+    padding: 10px;
+    border:3px outset black;
+    background-color: aliceblue;
+    text-align: center;
+    margin: left;
+    color: black;
+    width:97.5%;
+}
+.poloauto{
+      font-family:Arial, Helvetica, sans-serif;
+      padding: 10px;
+      border:3px outset black;
+      background-color: aliceblue;
+      text-align: center;
+      margin: left;
+      color: black;
+      width:70%;
+}
+.raze{
+    font-family:Arial, Helvetica, sans-serif;
+    padding: 10px;
+    border:3px outset black;
+    background-color: aliceblue;
+    text-align: center;
+    color: black;
+    width:50%;
+    font-size: 10px;
+}
+.firma{
+  font-family:Arial, Helvetica, sans-serif;
+  padding: 10px;
+  border:3px outset black;
+  background-color: aliceblue;
+  text-align: center;
+  color: black;
+  min-width:25%;
+  max-width: 50%;
+  font-size: 10px;
+}
+.razevlozeni{
+    font-family:Arial, Helvetica, sans-serif;
+    padding: 20px;
+    border:3px outset black;
+    background-color:#0e312c;
+    text-align: center;
+    margin: auto;
+    color: white;
+    width:37%;
+}
+.editace{
+    font-family:Arial, Helvetica, sans-serif;
+    padding: 10px;
+    border:3px outset black;
+    background-color: aliceblue;
+    text-align: center;
+    color: white;
+    margin: left;
+    width:100%;
+    text-decoration-color: black;
+}
+.search{
+  font-family:Arial, Helvetica, sans-serif;
+  border:3px outset black;
+  background-color: aliceblue;
+}
+ul {
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+    overflow: hidden;
+    background-color: #0e312c;
+    width: 1300px;
+}
+  
+li{
+    float: left;
+    width: 130px;
+}
+  
+li a {
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+    width: 75px;
+}
+  
+li a:hover {
+    background-color: #111111;
+    height: 35px;
+}
+  
+body {
+    background-image: url('adminback.jpg');
+}
+  
+head {
+    position: fixed;
+}
+#quiz {
+  max-width: 600px;
+  margin: 0 auto;
+  border: 3px solid black;
+}
+.question{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    background-color: white;
+    border-width: 100%;
+  }
+  .answers {
+    font-family: Arial, Helvetica, sans-serif;
+      margin-bottom: 0px;
+      background-color: white;
+      text-align: left;
+  }
+  #submit{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background-color: #0e312c;
+    color: #fff;
+    border: 0px;
+    border-radius: 3px;
+    padding: 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  #submit:hover{
+    background-color: #0e312c;
+  }
+.dropbtn {
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: inherit;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #0e312c;
+    min-height: 68px;
+    min-width: 100px;
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+    min-height: 68px;
+    min-width: 100px;
+    box-shadow: 0px 20px 10px 0px rgba(0,0,0,0.2);
+  }
+table, tr, td{
+  border-collapse: collapse;
+  border: 2px solid;
+}
+
+tr:nth-child(odd) {background-color: #0000;}

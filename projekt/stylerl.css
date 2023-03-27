@@ -1,0 +1,92 @@
+.vlozeni{
+    font-family: Arial, Helvetica, sans-serif;
+    margin:auto;
+    padding:10px;
+    border:3px outset black;
+    background-color:#0e312c;
+    text-align: center;
+    width: 25%;
+    color:white;
+  }
+  .select{
+    font-family:Arial, Helvetica, sans-serif;
+    padding: 10px;
+    border:3px outset black;
+    background-color: aliceblue;
+    text-align: center;
+    color: white;
+    margin: left;
+    width:50%;
+  }
+  .editace{
+    font-family:Arial, Helvetica, sans-serif;
+    padding: 10px;
+    border:3px outset black;
+    background-color: aliceblue;
+    text-align: center;
+    color: white;
+    margin: left;
+    width:100%;
+    text-decoration-color: black;
+  }
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #0e312c;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #111111;
+  }
+  
+  body {
+    background-image: url('./hlavni/reg-log/reglog.jpg');
+  }
+  
+  head {
+    position: fixed;
+  }
+  
+  .Button{
+    Color: black;
+    font-size: 24px;
+  }
+  .button1 {background-color: #006400;}
+a{
+  background-color:#fff;
+   font-family: Arial;
+   font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  border-Width: 12px #000
+}
+p.ban{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 50px;
+  background-color:white;
+  width: 500px;
+  border-color: #000;
+  border-radius: 5px;
+}
+p.NP{
+  font-family: Arial, Helvetica, sans-serif;
+  border-color: #000;
+  background-color:white;
+  border-radius: 5px;
+  width: 452px;
+}
