@@ -8,11 +8,9 @@ include '../utils/navbar.php';
 <body>
     <form method="post">
         <input type="text" name="searchZbran" placeholder="Vyhledat podle názvu.">
-        <select name="searchRaze">
-            <option value="" disabled selected>Vyber podle řáže.</option>
-            <input type="text" name="searchFirma" placeholder="Vyhledat podle firmy.">
-            <input type="text" name="searchDruh" placeholder="Vyhledat podle druhu.">
-            <button type="submit">vyhledat</button>
+        <input type="text" name="searchRaze" placeholder="Vyhledat podle ráže.">
+        <input type="text" name="searchFirma" placeholder="Vyhledat podle výrobce.">
+        <button type="submit">vyhledat</button>
     </form>
 </body>
 
@@ -20,18 +18,35 @@ include '../utils/navbar.php';
 <?php
 ob_start();
 session_start();
-if (!isset($_SESSION['Username'])) {
-    header("location: http://zbranedata.jednoduse.cz/hlavni/reg-log/login.php");
+if (!isset($_SESSION['Username']) || $_SESSION['usertype'] == 2 || $_SESSION['usertype'] == 3) {
+    header("Location: http://zbanedata.jednoduse.cz/hlavni/reg-log/login.php");
+    exit();
 }
 include '../utils/connectToDB.php';
-if (isset($_POST['search'])) {
-    $search = mysqli_real_escape_string($conn, $_POST['search']);
+if (isset($_POST['searchZbran'])) {
+    $searchZbran = mysqli_real_escape_string($conn, $_POST['searchZbran']);
     $sql = "SELECT zbran.ID, zbran.nazev, druh.druh, raze.raze, zbran.cena, firma.firma, zbran.popis
     FROM zbran 
     JOIN raze ON zbran.raze=raze.ID 
     JOIN firma ON zbran.firma=firma.ID 
     JOIN druh ON zbran.druh=druh.ID 
-    WHERE druh.druh = 'Útočná puška' AND nazev LIKE '%$search%'";
+    WHERE druh.druh = 'Útočná puška' AND nazev LIKE '%$searchZbran%'";
+} elseif (isset($_POST['searchRaze'])) {
+    $searchRaze = mysqli_real_escape_string($conn, $_POST['searchRaze']);
+    $sql = "SELECT zbran.ID, zbran.nazev, druh.druh, raze.raze, zbran.cena, firma.firma, zbran.popis
+    FROM zbran 
+    JOIN raze ON zbran.raze=raze.ID 
+    JOIN firma ON zbran.firma=firma.ID 
+    JOIN druh ON zbran.druh=druh.ID 
+    WHERE druh.druh = 'Útočná puška' AND raze.raze LIKE '%$searchRaze%'";
+} elseif (isset($_POST['searchFirma'])) {
+    $searchFirma = mysqli_real_escape_string($conn, $_POST['searchFirma']);
+    $sql = "SELECT zbran.ID, zbran.nazev, druh.druh, raze.raze, zbran.cena, firma.firma, zbran.popis
+    FROM zbran 
+    JOIN raze ON zbran.raze=raze.ID 
+    JOIN firma ON zbran.firma=firma.ID 
+    JOIN druh ON zbran.druh=druh.ID 
+    WHERE druh.druh = 'Útočná puška' AND firma.firma LIKE '%$searchFirma%'";
 } else {
     $sql = "SELECT zbran.ID, zbran.nazev, druh.druh, raze.raze, zbran.cena, firma.firma, zbran.popis
         FROM zbran 
@@ -49,7 +64,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "<th>Název</th>";
     echo "<th>Ráže</th>";
     echo "<th>Cena v kč</th>";
-    echo "<th>Firma</th>";
+    echo "<th>Výrobce</th>";
     echo "<th>Druh</th>";
     echo "<th>Popis</th>";
     echo "</tr>";

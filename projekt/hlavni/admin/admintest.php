@@ -3,6 +3,11 @@
 
 <?php
 include '../utils/navbar.php';
+session_start();
+if (!isset($_SESSION['Username']) || $_SESSION['usertype'] == 2 || $_SESSION['usertype'] == 3) {
+    header("Location: http://zbanedata.jednoduse.cz/hlavni/reg-log/login.php");
+    exit();
+}
 ?>
 
 <body>
@@ -107,6 +112,42 @@ include '../utils/navbar.php';
                 A: 'kategorie B.<br>',
                 B: 'kategorie C.<br>',
                 C: 'kategorie C-I.'
+            },
+            correctAnswer: 'B'
+        },
+        {
+            question: "12. Samonabíjecí zbraně, pokud mají vzhled samočinných zbraní, jsou podle zákona o zbraních zbraně zařazené mezi",
+            answers: {
+                A: 'kategorie C.<br>',
+                B: 'kategorie A.<br>',
+                C: 'kategorie B.'
+            },
+            correctAnswer: 'C'
+        },
+        {
+            question: "13. Signální zbraně pro použití  signálních nábojů ráže větší než 16 mm jsou podle zákona o zbraních zbraně zařazené mezi",
+            answers: {
+                A: 'kategorie B.<br>',
+                B: 'kategorie C.<br>',
+                C: 'kategorie D-I.'
+            },
+            correctAnswer: 'A'
+        },
+        {
+            question: "14. Elektrický zneschopňujicí prostředek založený na principu střelné zbraně (taser) podle zákona o zbraních",
+            answers: {
+                A: 'kategorie C-I.<br>',
+                B: 'kategorie A.<br>',
+                C: 'kategorie není považována za zbraň.'
+            },
+            correctAnswer: 'A'
+        },
+        {
+            question: "15. zbraně kategorie C-I jsou podle zákona a zbraních",
+            answers: {
+                A: 'Zbraně volně prodejné.<br>',
+                B: 'Zbraně podléhající ohlášení.<br>',
+                C: 'Zbraně, jejichž nabývání, držení a případně nošení je podmíněno držením platného zbrojního průkazu.'
             },
             correctAnswer: 'B'
         },

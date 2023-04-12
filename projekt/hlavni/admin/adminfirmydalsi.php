@@ -9,7 +9,7 @@ include '../utils/navbar.php';
     <div class="razevlozeni">
         <form method="POST">
             <p>
-            <p>Firma:</p>
+            <p>Výrobce:</p>
             <input type="text" id="raze" name="firma" placename="firma">
             <p>
             <p>Popis:</p>
@@ -23,8 +23,9 @@ include '../utils/navbar.php';
 </html>
 <?php
 session_start();
-if (!isset($_SESSION['Username'])) {
-    header("location: http://zbranedata.jednoduse.cz/hlavni/reg-log/login.php");
+if (!isset($_SESSION['Username']) || $_SESSION['usertype'] == 2 || $_SESSION['usertype'] == 3) {
+    header("Location: http://zbanedata.jednoduse.cz/hlavni/reg-log/login.php");
+    exit();
 }
 include '../utils/connectToDB.php';
 if (isset($_POST["submit"]) and isset($_POST["firma"]) and isset($_POST["popis"])) {

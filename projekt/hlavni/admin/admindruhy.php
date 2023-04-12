@@ -15,8 +15,9 @@ include '../utils/navbar.php';
 <?php
 ob_start();
 session_start();
-if (!isset($_SESSION['Username'])) {
-    header("location: http://zbranedata.jednoduse.cz/hlavni/reg-log/login.php");
+if (!isset($_SESSION['Username']) || $_SESSION['usertype'] == 2 || $_SESSION['usertype'] == 3) {
+    header("Location: http://zbanedata.jednoduse.cz/hlavni/reg-log/login.php");
+    exit();
 }
 include '../utils/connectToDB.php';
 

@@ -35,11 +35,12 @@ ul {
   padding: 0;
   overflow: hidden;
   background-color: #0e312c;
+  width: 1330px;
 }
 
 li {
   float: left;
-  width:118px;
+  width:166px;
 }
 
 li a {

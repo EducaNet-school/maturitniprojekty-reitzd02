@@ -9,17 +9,14 @@
         <form method="post">
             <p style="font-family: Arial; font-size: 40px; font-weight: bold; color: #fff;">login</p>
             <p>email:</p>
-            <p>
-                <input type="email" id="Email" name="Email" placeholder="Email"><br>
+            <input type="email" id="Email" name="Email" placeholder="Email"><br>
             <p>heslo:</p>
             <input type="password" id="Password" name="Password" placeholder="Password"><br>
-            <p>
             <p>username:</p>
             <input type="text" id="Username" name="Username" placeholder="Username"><br>
+            <button style="font-family: Arial; font-size: 24px; font-weight: bold; color: #000;" type="submit" name="submit" id="submit">Login</button><br>
             <p>
-                <button style="font-family: Arial; font-size: 24px; font-weight: bold; color: #000;" type="submit" name="submit" id="submit">Login</button>
-            <p>
-                <a href="http://zbranedata.jednoduse.cz/hlavni/hlavni/reg-log/register.php" style=" background-color:#fff; font-family: Arial; font-size: 24px; font-weight: bold; color: #000; border-Width: 12px #000 ">Nejste zaregistrován?</a>
+                <a href="https://zbranedata.jednoduse.cz/index.php" style=" background-color:#fff; font-family: Arial; font-size: 24px; font-weight: bold; color: #000; border-Width: 12px #000 ">Nejste zaregistrován?</a>
 
     </div>
 </body>
@@ -44,16 +41,16 @@ if (isset($_POST["submit"]) and isset($_POST["Email"]) and isset($_POST["Passwor
         if ($f2["usertype"] == 2) {
             $_SESSION['Username'] = $Username;
             $_SESSION['usertype'] = 2;
-            header('location: http://zbranedata.jednoduse.cz/hlavni/hlavni/user/usermainmenu.php');
+            header('location: http://zbranedata.jednoduse.cz/hlavni/user/userutocne.php');
             exit;
         } elseif ($f2["usertype"] == 1) {
             $_SESSION['Username'] = $Username;
             $_SESSION['usertype'] = 1;
-            header('location: http://zbranedata.jednoduse.cz/hlavni/hlavni/admin/adminboard.php');
+            header('location: http://zbranedata.jednoduse.cz/hlavni/admin/adminboard.php');
         } elseif ($f2["usertype"] == 3) {
             $_SESSION['Username'] = $Username;
             $_SESSION['usertype'] = 3;
-            header('location: http://zbranedata.jednoduse.cz/hlavni/hlavni/reg-log/ban.php');
+            header('location: http://zbranedata.jednoduse.cz/hlavni/reg-log/ban.php');
         }
     } else {
         echo "<p class = NP>Bohužel nejste zaregistrovaný, či jste vloži špatný E-mail/Heslo.</p>";

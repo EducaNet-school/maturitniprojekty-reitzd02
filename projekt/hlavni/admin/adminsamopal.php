@@ -15,25 +15,26 @@ include '../utils/navbar.php';
 </html>
 <?php
 session_start();
-if (!isset($_SESSION['Username'])) {
-    header("location: http://zbranedata.jednoduse.cz/hlavni/reg-log/login.php");
+if (!isset($_SESSION['Username']) || $_SESSION['usertype'] == 2 || $_SESSION['usertype'] == 3) {
+    header("Location: http://zbanedata.jednoduse.cz/hlavni/reg-log/login.php");
+    exit();
 }
 include '../utils/connectToDB.php';
 if (isset($_POST['search'])) {
     $search = mysqli_real_escape_string($conn, $_POST['search']);
-    $sql = "SELECT zbran.ID, zbran.nazev, druh.druh, raze.raze, zbran.cena, firma.firma 
+    $sql = "SELECT zbran.ID, zbran.nazev, druh.druh, raze.raze, zbran.cena, firma.firma, zbran.popis
     FROM zbran 
     JOIN raze ON zbran.raze=raze.ID 
     JOIN firma ON zbran.firma=firma.ID 
     JOIN druh ON zbran.druh=druh.ID 
     WHERE druh.druh = 'Samopal' AND nazev LIKE '%$search%'";
 } else {
-    $sql = "SELECT zbran.ID, zbran.nazev, druh.druh, raze.raze, zbran.cena, firma.firma 
-        FROM zbran 
-        JOIN raze ON zbran.raze=raze.ID 
-        JOIN firma ON zbran.firma=firma.ID 
-        JOIN druh ON zbran.druh=druh.ID 
-        WHERE druh.druh = 'Samopal'";
+    $sql = "SELECT zbran.ID, zbran.nazev, druh.druh, raze.raze, zbran.cena, firma.firma, zbran.popis
+    FROM zbran 
+    JOIN raze ON zbran.raze=raze.ID 
+    JOIN firma ON zbran.firma=firma.ID 
+    JOIN druh ON zbran.druh=druh.ID 
+    WHERE druh.druh = 'Samopal'";
 }
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
@@ -41,11 +42,12 @@ if (mysqli_num_rows($result) > 0) {
     echo "<table>";
     echo "<tr>";
     echo "<th>ID</th>";
-    echo "<th>název</th>";
+    echo "<th>Název</th>";
     echo "<th>Ráže</th>";
     echo "<th>Cena v kč</th>";
-    echo "<th>Firma</th>";
+    echo "<th>Výrobce</th>";
     echo "<th>Druh</th>";
+    echo "<th>Popis</th>";
     echo "</tr>";
     echo "</div>";
     while ($row = mysqli_fetch_array($result)) {
@@ -56,6 +58,7 @@ if (mysqli_num_rows($result) > 0) {
         echo "<td>" . $row['cena'] . "</td>";
         echo "<td>" . $row['firma'] . "</td>";
         echo "<td>" . $row['druh'] . "</td>";
+        echo "<td>" . $row['popis'] . "</td>";
         echo '<td><a href="?edit_id=' . $row['ID'] . '">edit</a></td>';
         echo '<td><a href="?delete_id=' . $row['ID'] . '">delete</a></td>';
         echo "</tr>";
@@ -67,7 +70,7 @@ if (mysqli_num_rows($result) > 0) {
         $sql = "delete from zbran where ID = $getID ";
         mysqli_query($conn, $sql);
         if (mysqli_affected_rows($conn) > 0) {
-            header("http://zbranedata.jednoduse.cz/hlavni/admin/adminsamopal.php");
+            header("http: http://zbranedata.jednoduse.cz/hlavni/admin/adminsamopal.php");
             exit;
         } else {
         }
@@ -109,6 +112,9 @@ if (mysqli_num_rows($result) > 0) {
         }
         echo '</select>';
         echo '<p>';
+        echo '<p>Popis:</p>';
+        echo '<textarea rows="10" cols="50" name="popis"></textarea>';
+        echo '<p>';
         echo '<input type="submit" name="submit" value="Update">';
         echo '</form>';
 
@@ -118,9 +124,10 @@ if (mysqli_num_rows($result) > 0) {
             $new_cena = $_POST['cena'];
             $new_firma = $_POST['firma'];
             $new_druh = $_POST['druh'];
-            $sql1 = "UPDATE zbran SET nazev='$new_nazev', raze='$new_raze', cena='$new_cena', firma='$new_firma', druh='$new_druh' WHERE ID='$getID'";
+            $new_popis = $_POST['popis'];
+            $sql1 = "UPDATE zbran SET nazev='$new_nazev', raze='$new_raze', cena='$new_cena', firma='$new_firma', druh='$new_druh', popis='$new_popis' WHERE ID='$getID'";
             if (mysqli_query($conn, $sql1)) {
-                header("Location: http://zbranedata.jednoduse.cz/hlavni/admin/adminsamopal.php");
+                header("Location:http://zbranedata.jednoduse.cz/hlavni/admin/adminsamopal.php");
             }
         }
     }

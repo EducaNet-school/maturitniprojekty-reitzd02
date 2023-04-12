@@ -81,16 +81,16 @@
 }
 ul {
     list-style-type: none;
-    margin: auto;
+    margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #0e312c;
-    width: 1300px;
+    width: 1330px;
 }
   
 li{
     float: left;
-    width: 130px;
+    width: 133px;
 }
   
 li a {
@@ -100,12 +100,14 @@ li a {
     text-align: center;
     padding: 16px;
     text-decoration: none;
-    width: 75px;
+    min-width: 75px;
 }
   
 li a:hover {
     background-color: #111111;
     height: 35px;
+    min-width: 75px;
+    
 }
   
 body {
@@ -161,14 +163,14 @@ head {
     position: absolute;
     background-color: #0e312c;
     min-height: 68px;
-    min-width: 100px;
+    min-width: 135px;
     box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
   }
   
   .dropdown:hover .dropdown-content {
     display: block;
     min-height: 68px;
-    min-width: 100px;
+    min-width: 135px;
     box-shadow: 0px 20px 10px 0px rgba(0,0,0,0.2);
   }
 table, tr, td{

@@ -24,14 +24,14 @@ if (!isset($_SESSION['Username'])) {
 include '../utils/connectToDB.php';
 if (isset($_POST['search'])) {
   $search = mysqli_real_escape_string($conn, $_POST['search']);
-  $sql = "SELECT zbran.ID, zbran.nazev, druh.druh, raze.raze, zbran.cena, firma.firma 
-  FROM zbran 
-  JOIN raze ON zbran.raze=raze.ID 
-  JOIN firma ON zbran.firma=firma.ID 
-  JOIN druh ON zbran.druh=druh.ID 
-  WHERE druh.druh = 'Samopal' AND nazev LIKE '%$search%'";
+  $sql = "SELECT zbran.ID, zbran.nazev, druh.druh, raze.raze, zbran.cena, firma.firma, zbran.popis
+    FROM zbran 
+    JOIN raze ON zbran.raze=raze.ID 
+    JOIN firma ON zbran.firma=firma.ID 
+    JOIN druh ON zbran.druh=druh.ID 
+    WHERE druh.druh = 'Samopal' AND nazev LIKE '%$search%'";
 } else {
-  $sql = "SELECT zbran.ID, zbran.nazev, druh.druh, raze.raze, zbran.cena, firma.firma 
+  $sql = "SELECT zbran.ID, zbran.nazev, druh.druh, raze.raze, zbran.cena, firma.firma, zbran.popis
       FROM zbran 
       JOIN raze ON zbran.raze=raze.ID 
       JOIN firma ON zbran.firma=firma.ID 
@@ -40,14 +40,15 @@ if (isset($_POST['search'])) {
 }
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
-  echo "<div class = select>";
+  echo "<div class = 'select'>";
   echo "<table>";
   echo "<tr>";
   echo "<th>Název</th>";
   echo "<th>Ráže</th>";
   echo "<th>Cena v kč</th>";
-  echo "<th>Firma</th>";
+  echo "<th>Výrobce</th>";
   echo "<th>Druh</th>";
+  echo "<th>Popis</th>";
   echo "</tr>";
   echo "</div>";
   while ($row = mysqli_fetch_array($result)) {
@@ -57,6 +58,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "<td>" . $row['cena'] . "</td>";
     echo "<td>" . $row['firma'] . "</td>";
     echo "<td>" . $row['druh'] . "</td>";
+    echo "<td>" . $row['popis'] . "</td>";
     echo "</tr>";
   }
   echo "</table>";

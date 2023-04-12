@@ -13,7 +13,6 @@ include '../utils/navbar.php';
 </html>
 <?php
 session_start();
-
 if (!isset($_SESSION['Username']) || $_SESSION['usertype'] == 2 || $_SESSION['usertype'] == 3) {
     header("Location: http://zbanedata.jednoduse.cz/hlavni/reg-log/login.php");
     exit();
@@ -58,7 +57,7 @@ if (mysqli_num_rows($searchResult) > 0) {
         $sql = "delete from email where ID = $getID ";
         mysqli_query($conn, $sql);
         if (mysqli_affected_rows($conn) > 0) {
-            header("Location: http://zbranedata.jednoduse.cz/hlavni/hlavni/admin/adminboard.php");
+            header("Location: http://zbranedata.jednoduse.cz/hlavni/admin/adminboard.php");
             exit;
         } else {
         }
@@ -71,7 +70,7 @@ if (mysqli_num_rows($searchResult) > 0) {
         if ((!empty($new_usertype))) {
             $sql = "UPDATE email SET usertype='$new_usertype' WHERE ID='$getID'";
             if (mysqli_query($conn, $sql)) {
-                header("Location: http://zbranedata.jednoduse.cz/hlavni/hlavni/admin/adminboard.php");
+                header("Location: http://zbranedata.jednoduse.cz/hlavni/admin/adminboard.php");
             } else {
             }
         } else {

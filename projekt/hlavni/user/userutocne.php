@@ -40,13 +40,13 @@ if (isset($_POST['search'])) {
 }
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
-    echo "<div class = select>";
+    echo "<div class = 'select'>";
     echo "<table>";
     echo "<tr>";
     echo "<th>Název</th>";
     echo "<th>Ráže</th>";
     echo "<th>Cena v kč</th>";
-    echo "<th>Firma</th>";
+    echo "<th>Výrobce</th>";
     echo "<th>Druh</th>";
     echo "<th>Popis</th>";
     echo "</tr>";

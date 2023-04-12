@@ -14,37 +14,39 @@ include '../utils/navbar.php';
 </html>
 <?php
 session_start();
-if (!isset($_SESSION['Username'])) {
-    header("location: http://zbranedata.jednoduse.cz/hlavni/reg-log/login.php");
+if (!isset($_SESSION['Username']) || $_SESSION['usertype'] == 2 || $_SESSION['usertype'] == 3) {
+    header("Location: http://zbanedata.jednoduse.cz/hlavni/reg-log/login.php");
+    exit();
 }
 include '../utils/connectToDB.php';
 if (isset($_POST['search'])) {
     $search = mysqli_real_escape_string($conn, $_POST['search']);
-    $sql = "SELECT zbran.ID, zbran.nazev, druh.druh, raze.raze, zbran.cena, firma.firma 
+    $sql = "SELECT zbran.ID, zbran.nazev, druh.druh, raze.raze, zbran.cena, firma.firma, zbran.popis
     FROM zbran 
     JOIN raze ON zbran.raze=raze.ID 
     JOIN firma ON zbran.firma=firma.ID 
     JOIN druh ON zbran.druh=druh.ID 
-    WHERE druh.druh = 'poloautomaticka puska' AND nazev LIKE '%$search%'";
+    WHERE druh.druh = 'Semi-auto' AND nazev LIKE '%$search%'";
 } else {
-    $sql = "SELECT zbran.ID, zbran.nazev, druh.druh, raze.raze, zbran.cena, firma.firma 
+    $sql = "SELECT zbran.ID, zbran.nazev, druh.druh, raze.raze, zbran.cena, firma.firma, zbran.popis
         FROM zbran 
         JOIN raze ON zbran.raze=raze.ID 
         JOIN firma ON zbran.firma=firma.ID 
         JOIN druh ON zbran.druh=druh.ID 
-        WHERE druh.druh = 'poloautomaticka puska'";
+        WHERE druh.druh = 'Semi-auto'";
 }
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
-    echo "<div class = poloauto>";
+    echo "<div class = select>>";
     echo "<table>";
     echo "<tr>";
     echo "<th>ID</th>";
     echo "<th>Název</th>";
-    echo "<th>Raze</th>";
+    echo "<th>Ráže</th>";
     echo "<th>Cena v kč</th>";
-    echo "<th>Firma</th>";
+    echo "<th>Výrobce</th>";
     echo "<th>Druh</th>";
+    echo "<th>Popis</th>";
     echo "</tr>";
     echo "</div>";
     while ($row = mysqli_fetch_array($result)) {
@@ -55,6 +57,7 @@ if (mysqli_num_rows($result) > 0) {
         echo "<td>" . $row['cena'] . "</td>";
         echo "<td>" . $row['firma'] . "</td>";
         echo "<td>" . $row['druh'] . "</td>";
+        echo "<td>" . $row['popis'] . "</td>";
         echo '<td><a href="?edit_id=' . $row['ID'] . '">edit</a></td>';
         echo '<td><a href="?delete_id=' . $row['ID'] . '">delete</a></td>';
         echo "</tr>";

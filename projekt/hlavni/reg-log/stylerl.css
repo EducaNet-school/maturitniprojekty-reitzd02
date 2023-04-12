@@ -55,7 +55,7 @@
   }
   
   body {
-    background-image: url('./hlavni/reg-log/reglog.jpg');
+    background-image: url('reglog.jpg');
   }
   
   head {
@@ -89,4 +89,11 @@ p.NP{
   background-color:white;
   border-radius: 5px;
   width: 452px;
+}
+p.NEP{
+  font-family: Arial, Helvetica, sans-serif;
+  border-color: #000;
+  background-color:white;
+  border-radius: 5px;
+  width: 310px;
 }

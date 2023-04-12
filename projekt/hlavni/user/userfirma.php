@@ -35,8 +35,8 @@ if (mysqli_num_rows($result) > 0) {
     echo "<div class = select>";
     echo "<table>";
     echo "<tr>";
-    echo "<th>Firma</th>";
-    echo "<th>Popis firmy</th>";
+    echo "<th>Výrobce</th>";
+    echo "<th>Popis</th>";
     echo "</tr>";
     echo "</div>";
     while ($row = mysqli_fetch_array($result)) {
